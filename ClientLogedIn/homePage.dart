@@ -13,11 +13,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 
-import 'home_page_clientold_model.dart';
-export 'home_page_clientold_model.dart';
+import 'home_page_client_new_model.dart';
+export 'home_page_client_new_model.dart';
 
-class HomePageClientoldWidget extends StatefulWidget {
-  const HomePageClientoldWidget({
+class HomePageClientNewWidget extends StatefulWidget {
+  const HomePageClientNewWidget({
     Key? key,
     this.username,
     this.chatname,
@@ -27,19 +27,19 @@ class HomePageClientoldWidget extends StatefulWidget {
   final String? chatname;
 
   @override
-  _HomePageClientoldWidgetState createState() =>
-      _HomePageClientoldWidgetState();
+  _HomePageClientNewWidgetState createState() =>
+      _HomePageClientNewWidgetState();
 }
 
-class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
-  late HomePageClientoldModel _model;
+class _HomePageClientNewWidgetState extends State<HomePageClientNewWidget> {
+  late HomePageClientNewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageClientoldModel());
+    _model = createModel(context, () => HomePageClientNewModel());
 
     _model.textController1 ??= TextEditingController();
     _model.inputMessageController ??= TextEditingController();
@@ -76,7 +76,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                 ),
               Text(
                 FFLocalizations.of(context).getText(
-                  'kz29los3' /* Messagerie */,
+                  'bm9x1q31' /* Messagerie */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Poppins',
@@ -132,7 +132,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'pkqtc60h' /* Deconnexion */,
+                              'j899c703' /* Deconnexion */,
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
@@ -182,7 +182,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                                 child: Container(
-                                  width: 320,
+                                  width: 270,
                                   height: 800,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
@@ -205,14 +205,18 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'u4s10ukh' /* Nouveau message ici -> */,
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 10, 0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '6in87c25' /* Nouveau message ici : */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
                                             ),
                                             Align(
                                               alignment:
@@ -232,6 +236,52 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                 onPressed: () async {
                                                   context
                                                       .pushNamed('creer_chat');
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 40, 5),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'acarvnxg' /* Pour accéder aux prévisions mé... */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                              child: FlutterFlowIconButton(
+                                                borderColor: Colors.transparent,
+                                                borderRadius: 30,
+                                                borderWidth: 1,
+                                                buttonSize: 60,
+                                                icon: Icon(
+                                                  Icons.thermostat_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 30,
+                                                ),
+                                                onPressed: () async {
+                                                  await launchURL(
+                                                      'https://www.theweathernetwork.com/ca/weather/ontario/ottawa');
                                                 },
                                               ),
                                             ),
@@ -365,7 +415,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'x5fa7ymn' /* Rechercher... */,
+                                                          'zssqk6ro' /* Rechercher... */,
                                                         ),
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
@@ -447,6 +497,27 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                                     4.0),
                                                           ),
                                                         ),
+                                                        suffixIcon: _model
+                                                                .textController1!
+                                                                .text
+                                                                .isNotEmpty
+                                                            ? InkWell(
+                                                                onTap:
+                                                                    () async {
+                                                                  _model
+                                                                      .textController1
+                                                                      ?.clear();
+                                                                  setState(
+                                                                      () {});
+                                                                },
+                                                                child: Icon(
+                                                                  Icons.clear,
+                                                                  color: Color(
+                                                                      0xFF757575),
+                                                                  size: 22,
+                                                                ),
+                                                              )
+                                                            : null,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -455,38 +526,6 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                       validator: _model
                                                           .textController1Validator
                                                           .asValidator(context),
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            -0.3, 0.4),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          Colors.transparent,
-                                                      borderRadius: 30,
-                                                      borderWidth: 1,
-                                                      buttonSize: 40,
-                                                      icon: Icon(
-                                                        Icons.cancel_outlined,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 25,
-                                                      ),
-                                                      onPressed: () async {
-                                                        setState(() {
-                                                          _model.textController1
-                                                              ?.clear();
-                                                        });
-                                                        setState(() {
-                                                          FFAppState()
-                                                                  .searchlist =
-                                                              false;
-                                                        });
-                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -590,6 +629,59 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0, 1),
+                                                                  child:
+                                                                      FlutterFlowIconButton(
+                                                                    borderColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    borderRadius:
+                                                                        30,
+                                                                    borderWidth:
+                                                                        1,
+                                                                    buttonSize:
+                                                                        50,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .delete_outline,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      size: 25,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () async {
+                                                                      var confirmDialogResponse = await showDialog<
+                                                                              bool>(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (alertDialogContext) {
+                                                                              return AlertDialog(
+                                                                                content: Text('Etes-vous sûr que vous voulez supprimer?'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                    child: Text(' Annuler'),
+                                                                                  ),
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                    child: Text(' Confirmer'),
+                                                                                  ),
+                                                                                ],
+                                                                              );
+                                                                            },
+                                                                          ) ??
+                                                                          false;
+                                                                      await listViewChatsRecord
+                                                                          .reference
+                                                                          .delete();
+                                                                    },
+                                                                  ),
+                                                                ),
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -629,7 +721,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                                         color: Color(
                                                                             0xFF7E968C),
                                                                         size:
-                                                                            28,
+                                                                            25,
                                                                       ),
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -639,72 +731,18 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                                             0),
                                                                         child:
                                                                             Text(
-                                                                          listViewChatsRecord
-                                                                              .chatName,
+                                                                          '${listViewChatsRecord.chatName}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .override(
                                                                                 fontFamily: 'Outfit',
                                                                                 color: Color(0xFF7E968C),
-                                                                                fontSize: 16,
+                                                                                fontSize: 14,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
                                                                       ),
                                                                     ],
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          40,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                                  child:
-                                                                      FlutterFlowIconButton(
-                                                                    borderColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    borderRadius:
-                                                                        30,
-                                                                    borderWidth:
-                                                                        1,
-                                                                    buttonSize:
-                                                                        60,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .delete_outline,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                      size: 30,
-                                                                    ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      var confirmDialogResponse = await showDialog<
-                                                                              bool>(
-                                                                            context:
-                                                                                context,
-                                                                            builder:
-                                                                                (alertDialogContext) {
-                                                                              return AlertDialog(
-                                                                                content: Text('are you sure you want to delete?'),
-                                                                                actions: [
-                                                                                  TextButton(
-                                                                                    onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                    child: Text('Cancel'),
-                                                                                  ),
-                                                                                  TextButton(
-                                                                                    onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                    child: Text('Confirm'),
-                                                                                  ),
-                                                                                ],
-                                                                              );
-                                                                            },
-                                                                          ) ??
-                                                                          false;
-                                                                    },
                                                                   ),
                                                                 ),
                                                               ],
@@ -791,7 +829,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'j5ah0viz' /* Administrateur */,
+                                                                  'c6azde9c' /* Administrateur */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -961,100 +999,153 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                             MainAxisSize.max,
                                                         children: [
                                                           Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10,
-                                                                          0,
-                                                                          15,
-                                                                          0),
-                                                              child: Material(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                elevation: 3,
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                ),
-                                                                child:
-                                                                    Container(
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    shape: BoxShape
-                                                                        .rectangle,
-                                                                  ),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Align(
-                                                                        alignment: AlignmentDirectional(
-                                                                            -1,
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Expanded(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            15,
                                                                             0),
+                                                                    child:
+                                                                        Material(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      elevation:
+                                                                          3,
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(5),
+                                                                          shape:
+                                                                              BoxShape.rectangle,
+                                                                        ),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10,
-                                                                              0,
-                                                                              10,
-                                                                              0),
-                                                                          child: SelectionArea(
-                                                                              child: Text(
-                                                                            '${listViewMessagesRecord.important ? 'IMPORTANT! - ' : ' '}${listViewMessagesRecord.message}',
-                                                                            textAlign:
-                                                                                TextAlign.start,
-                                                                            maxLines:
-                                                                                500,
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  fontSize: 19,
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                Align(
+                                                                                  alignment: AlignmentDirectional(-1, 0),
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                                                                                    child: SelectionArea(
+                                                                                        child: Text(
+                                                                                      '${listViewMessagesRecord.important ? 'IMPORTANT! - ' : ' '}${listViewMessagesRecord.message}',
+                                                                                      textAlign: TextAlign.start,
+                                                                                      maxLines: 500,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Poppins',
+                                                                                            fontSize: 19,
+                                                                                          ),
+                                                                                    )),
+                                                                                  ),
                                                                                 ),
-                                                                          )),
+                                                                                Align(
+                                                                                  alignment: AlignmentDirectional(-0.98, 0),
+                                                                                  child: Text(
+                                                                                    '${dateTimeFormat(
+                                                                                      'yMMMd',
+                                                                                      listViewMessagesRecord.timeStamp,
+                                                                                      locale: FFLocalizations.of(context).languageCode,
+                                                                                    )}, ${dateTimeFormat(
+                                                                                      'jm',
+                                                                                      listViewMessagesRecord.timeStamp,
+                                                                                      locale: FFLocalizations.of(context).languageCode,
+                                                                                    )}',
+                                                                                    textAlign: TextAlign.start,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Poppins',
+                                                                                          fontSize: 13,
+                                                                                          fontStyle: FontStyle.italic,
+                                                                                        ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
-                                                                      Align(
-                                                                        alignment: AlignmentDirectional(
-                                                                            -0.98,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          '${dateTimeFormat(
-                                                                            'yMMMd',
-                                                                            listViewMessagesRecord.timeStamp,
-                                                                            locale:
-                                                                                FFLocalizations.of(context).languageCode,
-                                                                          )}, ${dateTimeFormat(
-                                                                            'jm',
-                                                                            listViewMessagesRecord.timeStamp,
-                                                                            locale:
-                                                                                FFLocalizations.of(context).languageCode,
-                                                                          )}',
-                                                                          textAlign:
-                                                                              TextAlign.start,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                fontSize: 13,
-                                                                                fontStyle: FontStyle.italic,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0,
+                                                                              1),
+                                                                      child:
+                                                                          FlutterFlowIconButton(
+                                                                        borderColor:
+                                                                            Colors.transparent,
+                                                                        borderRadius:
+                                                                            30,
+                                                                        borderWidth:
+                                                                            1,
+                                                                        buttonSize:
+                                                                            50,
+                                                                        icon:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .delete_outline,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          size:
+                                                                              25,
+                                                                        ),
+                                                                        onPressed:
+                                                                            () async {
+                                                                          var confirmDialogResponse = await showDialog<bool>(
+                                                                                context: context,
+                                                                                builder: (alertDialogContext) {
+                                                                                  return AlertDialog(
+                                                                                    content: Text('Etes-vous sûr que vous voulez supprimer?'),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                        child: Text(' Annuler'),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                        child: Text(' Confirmer'),
+                                                                                      ),
+                                                                                    ],
+                                                                                  );
+                                                                                },
+                                                                              ) ??
+                                                                              false;
+                                                                          await listViewMessagesRecord
+                                                                              .reference
+                                                                              .delete();
+                                                                        },
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
                                                         ],
@@ -1099,7 +1190,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'uosfxu8j' /* Entrez le message... */,
+                                                        'lpswoue0' /* Entrez le message... */,
                                                       ),
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
@@ -1216,7 +1307,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'ks5nbv46' /* Important : */,
+                                                      'fwm40r7j' /* Important : */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1247,13 +1338,15 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                       message: _model
                                                           .inputMessageController
                                                           .text,
+                                                      timeStamp:
+                                                          getCurrentTimestamp,
                                                       uid: currentUserUid,
                                                       user:
                                                           currentUserDisplayName,
                                                       important:
-                                                          _model.switchValue,
-                                                      timeStamp:
-                                                          getCurrentTimestamp,
+                                                          _model.switchValue!
+                                                              ? true
+                                                              : false,
                                                     ));
                                                     setState(() {
                                                       _model
@@ -1264,7 +1357,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '5ng04p10' /* Envoyer */,
+                                                    's99lxj3r' /* Envoyer */,
                                                   ),
                                                   options: FFButtonOptions(
                                                     width: 130,
@@ -1318,7 +1411,7 @@ class _HomePageClientoldWidgetState extends State<HomePageClientoldWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'mm3tnjbi' /* S'il vous plait choisissez un ... */,
+                                          '8nxph2zi' /* S'il vous plait choisissez un ... */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
